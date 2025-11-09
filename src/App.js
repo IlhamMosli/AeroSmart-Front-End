@@ -5,6 +5,9 @@ import FlightList from './views/FlightList';
 import ConfirmationReservations from './views/ConfirmationReservations';
 import './App.css';
 import AjouteVol from './views/AjouteVol';
+import FlightDetails from './views/FlightDetails';
+import ReservationTicket from './views/ReservationTicket';
+import PassengerList from './views/PassengerList';
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
           <Route path="/flights" element={<FlightList />} />
           <Route path="/confirmation" element={<ConfirmationReservations />} />
           <Route path="/addvol" element={<AjouteVol />} />
+          <Route path="/flightDetails" element={<FlightDetails/>}/>
+          <Route path="/reservationTicket" element={<ReservationTicket/>}/>
+          <Route path="/passengerList" element={<PassengerList/>}/>
         </Routes>
       </div>
     </Router>
