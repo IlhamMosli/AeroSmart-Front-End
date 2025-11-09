@@ -3,13 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
 import FlightList from './views/FlightList';
 import ConfirmationReservations from './views/ConfirmationReservations';
-
-import Home from './Home';
-// import FlightList from './FlightList';
-
 import './App.css';
-import AjouteVol from './AjouteVol';
-// import VolsDisponibles from './VolsDisponible';
+import AjouteVol from './views/AjouteVol';
 
 
 function App() {
@@ -20,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/flights" element={<FlightList />} />
           <Route path="/confirmation" element={<ConfirmationReservations />} />
+          <Route path="/addvol" element={<AjouteVol />} />
         </Routes>
       </div>
     </Router>

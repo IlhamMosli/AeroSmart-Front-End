@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AjouteVol.css';
+import '../styles/AjouteVol.css';
 
 // ⚠️ IMPORTANT: Changez le port si votre backend utilise 8080 au lieu de 8081
 const API_URL = 'http://localhost:8081/api/flights';
