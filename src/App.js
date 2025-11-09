@@ -3,7 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
 import FlightList from './views/FlightList';
 import ConfirmationReservations from './views/ConfirmationReservations';
+
+import Home from './Home';
+// import FlightList from './FlightList';
+
 import './App.css';
+import AjouteVol from './AjouteVol';
+// import VolsDisponibles from './VolsDisponible';
 
 
 function App() {
@@ -19,5 +25,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
