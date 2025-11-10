@@ -9,6 +9,9 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Formulaire from './formulaire/Formulaire';
 import BagageSelection from './components/BagageSelection';
+import FlightDetails from './views/FlightDetails';
+import ReservationTicket from './views/ReservationTicket';
+import PassengerList from './views/PassengerList';
 
 // URL de votre backend Spring Boot
 const API_URL = 'http://localhost:9090/api/users';
@@ -58,6 +61,9 @@ function App() {
           <Route path="/flights" element={<FlightList />} />
           <Route path="/confirmation" element={<ConfirmationReservations />} />
           <Route path="/addvol" element={<AjouteVol />} />
+          <Route path="/flightDetails" element={<FlightDetails/>}/>
+          <Route path="/reservationTicket" element={<ReservationTicket/>}/>
+          <Route path="/passengerList" element={<PassengerList/>}/>
         </Routes>
       </div>
     </Router>
