@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AjouteVol.css';
 
 // ⚠️ IMPORTANT: Changez le port si votre backend utilise 8080 au lieu de 8081
-const API_URL = 'http://localhost:8081/api/flights';
+const API_URL = 'http://localhost:8080/api/flights';
 
 // Icônes SVG personnalisées
 const PlaneIcon = () => (
@@ -72,7 +72,7 @@ export default function AeroSmartForm() {
     return statusMap[status] || 'SCHEDULED';
   };
 
-  // ✅ NOUVELLE FONCTION handleSubmit avec appel API
+  // ✅ FONCTION handleSubmit avec REDIRECTION AUTOMATIQUE
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -81,7 +81,6 @@ export default function AeroSmartForm() {
 
     try {
       // Combiner date et heure pour créer des timestamps ISO
-      // S'assurer que l'heure est au format HH:MM avant d'ajouter :00
       const formatTime = (time) => {
         if (!time) return '';
         const parts = time.split(':');
@@ -100,17 +99,17 @@ export default function AeroSmartForm() {
       // ✅ Créer l'objet Flight avec les noms de champs correspondant EXACTEMENT au backend
       const flightData = {
         flightNumber: formData.flightNumber.toUpperCase(),
-        departureAirport: formData.departureAirport,      // ✅ Nom corrigé
-        arrivalAirport: formData.arrivalAirport,          // ✅ Nom corrigé
+        departureAirport: formData.departureAirport,
+        arrivalAirport: formData.arrivalAirport,
         departureTime: departureDateTime,
         arrivalTime: arrivalDateTime,
-        capacity: parseInt(formData.capacity),            // ✅ Nom corrigé
+        capacity: parseInt(formData.capacity),
         availableSeats: parseInt(formData.capacity),
-        flightStatus: mapFlightStatus(formData.flightStatus), // ✅ Nom corrigé
+        flightStatus: mapFlightStatus(formData.flightStatus),
         price: 1500.0,
-        boardingGate: formData.boardingGate || null,      // ✅ Nom corrigé
-        boardingStart: boardingStartDateTime,             // ✅ Nom corrigé
-        boardingEnd: boardingEndDateTime                  // ✅ Nom corrigé
+        boardingGate: formData.boardingGate || null,
+        boardingStart: boardingStartDateTime,
+        boardingEnd: boardingEndDateTime
       };
 
       console.log('🚀 Envoi des données vers:', API_URL);
@@ -136,23 +135,14 @@ export default function AeroSmartForm() {
       console.log('✅ Vol créé avec succès:', result);
 
       setSuccess(true);
-      alert('✅ Vol ajouté avec succès!');
-
-      // Réinitialiser le formulaire
-      setFormData({
-        flightNumber: '',
-        capacity: '',
-        departureAirport: '',
-        arrivalAirport: '',
-        departureDate: '2025-10-19',
-        arrivalDate: '2025-10-19',
-        departureTime: '',
-        arrivalTime: '',
-        boardingGate: '',
-        flightStatus: '',
-        boardingStart: '',
-        boardingEnd: ''
-      });
+      
+      // ✅ REDIRECTION AUTOMATIQUE VERS LA PAGE DES VOLS DISPONIBLES
+      alert(`✅ Vol ${result.flightNumber} ajouté avec succès!\n\nRedirection vers la liste des vols...`);
+      
+      // Redirection après 1 seconde
+      setTimeout(() => {
+        window.location.href = '/DisponibleVol'; // ⚠️ Ajustez selon votre route React Router
+      }, 1000);
 
     } catch (err) {
       console.error('❌ Erreur lors de l\'ajout du vol:', err);
@@ -173,8 +163,8 @@ export default function AeroSmartForm() {
           <span className="logo-text">Aero Smart</span>
         </div>
         <nav className="nav">
-          <a href="#" className="nav-link">vols disponibles</a>
-          <a href="#" className="nav-link nav-link-active">Ajouter un Vol</a>
+          <a href="/DisponibleVol" className="nav-link">vols disponibles</a>
+          <a href="/Formulaire" className="nav-link nav-link-active">ajouter vol</a>
           <a href="#" className="nav-link">Confirmation</a>
         </nav>
         <button className="power-button">⏻</button>
@@ -208,7 +198,7 @@ export default function AeroSmartForm() {
             borderRadius: '8px',
             color: '#0a0'
           }}>
-            ✅ Vol ajouté avec succès!
+            ✅ Vol ajouté avec succès! Redirection en cours...
           </div>
         )}
 
@@ -265,6 +255,7 @@ export default function AeroSmartForm() {
                   <option value="Tanger">Tanger</option>
                   <option value="Marrakech">Marrakech</option>
                   <option value="Rabat">Rabat</option>
+                  <option value="Fes">Fes</option>
                 </select>
               </div>
 
@@ -283,6 +274,7 @@ export default function AeroSmartForm() {
                   <option value="Tanger">Tanger</option>
                   <option value="Marrakech">Marrakech</option>
                   <option value="Rabat">Rabat</option>
+                  <option value="Fes">Fes</option>
                 </select>
               </div>
 

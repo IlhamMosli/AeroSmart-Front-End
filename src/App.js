@@ -4,7 +4,7 @@ import Home from './Home';
 // import FlightList from './FlightList';
 import './App.css';
 import AjouteVol from './AjouteVol';
-// import VolsDisponibles from './VolsDisponible';
+import VolsDisponibles from './VolsDisponible';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Route path="/" element={<Home />} />
       {/* <Route path="/flights" element={<FlightList />} /> */}
       <Route path="/Formulaire" element={<AjouteVol />} />
-      {/* <Route path="/DisponibleVol" element={<VolsDisponibles />} /> */}
+      <Route path="/DisponibleVol" element={<VolsDisponibles />} />
     </Routes>
   </div>
 </Router>
