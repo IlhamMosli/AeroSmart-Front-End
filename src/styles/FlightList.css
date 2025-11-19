@@ -84,8 +84,8 @@
 /* Carte d'informations de recherche */
 .search-info-card {
   background-color: white;
-  margin: 4rem auto;
-  max-width: 1500px;
+  margin-bottom: 4rem;
+  /* max-width: 1500px; */
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -124,9 +124,9 @@
 }
 
 .cities {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #1e3a8a;
 }
 
 .separator {
@@ -136,7 +136,7 @@
 
 .travel-date,
 .passengers {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #64748b;
 }
 

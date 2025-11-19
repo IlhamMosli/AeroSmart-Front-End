@@ -1,6 +1,6 @@
 // pages/Login.js
 import React, { useState } from 'react';
-import './AeroSmart.css';
+import '../styles/AeroSmart.css';
 
 function Login({ onNavigate }) {
   const [formData, setFormData] = useState({ username: '', password: '' });

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import ajouté
 import '../styles/FlightList.css';
 import Header from '../components/Header';
 
 const FlightList = () => {
   const [selectedFlight, setSelectedFlight] = useState(null);
+  const navigate = useNavigate(); // Hook pour la navigation
 
   // Données mockées des vols
   const flights = [
@@ -78,6 +80,11 @@ const FlightList = () => {
     console.log('Vol sélectionné:', flight);
   };
 
+  // Fonction pour retourner à la page d'accueil
+  const handleBackToHome = () => {
+    navigate('/home'); // Navigue vers la page d'accueil
+  };
+
   return (
     <div className="flight-list-page">
       {/* Header avec navigation et étapes */}
@@ -86,7 +93,10 @@ const FlightList = () => {
       {/* Carte d'informations de recherche */}
       <div className="search-info-card">
         <div className="search-info-header">
-          <button className="back-button">
+          <button 
+            className="back-button"
+            onClick={handleBackToHome} // Ajout de l'événement onClick
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>

@@ -1,342 +1,259 @@
 .confirmation-reservations {
-    min-height: 100vh;
-    background-color: #f5f7fa;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Header Styles */
-  .confirmation-header {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  .confirmation-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .company-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    font-family: 'Kavoon', cursive;
-    letter-spacing: 0.5px;
-    margin: 0;
-  }
-  
-  .nav-section {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  .nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
-    font-weight: 600;
-  }
-  
-  .nav-button {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.5rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
-  }
-  
-  /* Main Content */
-  .confirmation-main {
-    padding: 2rem;
-  }
-  
-  .confirmation-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  
-  /* Page Title */
-  .page-title-section {
-    margin-bottom: 2rem;
-    color: #1e3c72;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  font-family: 'Arial', sans-serif;
+}
 
+/* Main Content */
+.confirmation-main {
+  padding: 2rem;
+}
+
+.confirmation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Page Title */
+.page-title-section {
+  margin-bottom: 2rem;
+  color: #1e3c72;
+}
+
+.page-title-section h2 {
+  color: #1e3c72;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+/* Search Bar */
+.search-bar-section {
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1e3c72;
+  box-shadow: 0 4px 15px rgba(30, 60, 114, 0.2);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.clear-search {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.clear-search:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.search-results {
+  text-align: center;
+}
+
+.results-count {
+  color: #666;
+  font-size: 0.9rem;
+  background: #e3f2fd;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+/* Flights Table */
+.flights-table-section {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.flights-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.flights-table th {
+  background: #1e3c72;
+  color: white;
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #2a5298;
+}
+
+.flights-table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid #eef2f7;
+  color: #333;
+}
+
+.flights-table tr:last-child td {
+  border-bottom: none;
+}
+
+.flights-table tr:hover {
+  background: #f8f9fa;
+}
+
+/* Flight Number */
+.flight-number {
+  font-weight: bold;
+  color: #1e3c72;
+  font-size: 1.1rem;
+}
+
+/* Pending Reservations */
+.pending-reservations {
+  text-align: center;
+}
+
+.reservation-count {
+  color: rgb(0, 0, 0);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  min-width: 40px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Actions */
+.actions {
+  text-align: center;
+}
+
+.view-reservations-btn {
+  background: #1e3c72;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.view-reservations-btn:hover {
+  background: #2a5298;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 82, 152, 0.3);
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 3rem !important;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .confirmation-main {
+    padding: 1rem;
   }
-  
+
   .page-title-section h2 {
-    color: #1e3c72;
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
+    font-size: 1.8rem;
   }
-  
-  /* Search Bar */
-  .search-bar-section {
-    margin-bottom: 2rem;
-  }
-  
+
   .search-bar {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto 1rem auto;
+    max-width: 100%;
   }
-  
-  .search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-  }
-  
+
   .search-input {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    border: 2px solid #e1e5e9;
-    border-radius: 10px;
-    font-size: 1rem;
-    background: white;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+    font-size: 0.9rem;
   }
-  
-  .search-input:focus {
-    outline: none;
-    border-color: #1e3c72;
-    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.2);
+
+  .search-icon {
+    left: 0.875rem;
   }
-  
-  .search-input::placeholder {
-    color: #999;
-  }
-  
+
   .clear-search {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #666;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 0.25rem;
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    right: 0.875rem;
   }
-  
-  .clear-search:hover {
-    background: #f0f0f0;
-    color: #333;
-  }
-  
-  .search-results {
-    text-align: center;
-  }
-  
-  .results-count {
-    color: #666;
-    font-size: 0.9rem;
-    background: #e3f2fd;
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    font-weight: 500;
-  }
-  
-  /* Flights Table */
-  .flights-table-section {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-  }
-  
+
   .flights-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
-  
-  .flights-table th {
-    background: #1e3c72;
-    color: white;
-    padding: 1.25rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1rem;
-    border-bottom: 2px solid #2a5298;
-  }
-  
+
+  .flights-table th,
   .flights-table td {
-    padding: 1.25rem 1rem;
-    border-bottom: 1px solid #eef2f7;
-    color: #333;
+    padding: 0.75rem 0.5rem;
   }
-  
-  .flights-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .flights-table tr:hover {
-    background: #f8f9fa;
-  }
-  
-  /* Flight Number */
-  .flight-number {
-    font-weight: bold;
-    color: #1e3c72;
-    font-size: 1.1rem;
-  }
-  
-  /* Pending Reservations */
-  .pending-reservations {
-    text-align: center;
-  }
-  
-  .reservation-count {
-    color: rgb(0, 0, 0);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    min-width: 40px;
-    display: inline-block;
-    text-align: center;
-  }
-  
-  /* Actions */
-  .actions {
-    text-align: center;
-  }
-  
+
   .view-reservations-btn {
-    background: #1e3c72;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.25rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    min-width: 140px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    min-width: 120px;
   }
-  
-  .view-reservations-btn:hover {
-    background: #2a5298;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(42, 82, 152, 0.3);
+}
+
+@media (max-width: 480px) {
+  .page-title-section h2 {
+    font-size: 1.5rem;
   }
-  
-  /* No Results */
-  .no-results {
-    text-align: center;
-    padding: 3rem !important;
-    color: #666;
-    font-style: italic;
+
+  .flights-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .confirmation-nav {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-    }
-  
-    .nav-section {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-  
-    .confirmation-main {
-      padding: 1rem;
-    }
-  
-    .page-title-section h2 {
-      font-size: 1.8rem;
-    }
-  
-    .search-bar {
-      max-width: 100%;
-    }
-  
-    .search-input {
-      padding: 0.875rem 0.875rem 0.875rem 2.5rem;
-      font-size: 0.9rem;
-    }
-  
-    .search-icon {
-      left: 0.875rem;
-    }
-  
-    .clear-search {
-      right: 0.875rem;
-    }
-  
-    .flights-table {
-      font-size: 0.85rem;
-    }
-  
-    .flights-table th,
-    .flights-table td {
-      padding: 0.75rem 0.5rem;
-    }
-  
-    .view-reservations-btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.8rem;
-      min-width: 120px;
-    }
+
+  .reservation-count {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
   }
-  
-  @media (max-width: 480px) {
-    .company-title {
-      font-size: 1.5rem;
-    }
-  
-    .page-title-section h2 {
-      font-size: 1.5rem;
-    }
-  
-    .flights-table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  
-    .reservation-count {
-      padding: 0.3rem 0.8rem;
-      font-size: 0.8rem;
-    }
-  
-    .search-input::placeholder {
-      font-size: 0.85rem;
-    }
+
+  .search-input::placeholder {
+    font-size: 0.85rem;
   }
+}

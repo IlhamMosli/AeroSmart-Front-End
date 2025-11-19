@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AjouteVol.css';
+import AdminHeader from '../components/AdminHeader';
 
 // ⚠️ IMPORTANT: Changez le port si votre backend utilise 8080 au lieu de 8081
 const API_URL = 'http://localhost:8081/api/flights';
@@ -48,6 +50,7 @@ export default function AeroSmartForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,17 +103,17 @@ export default function AeroSmartForm() {
       // ✅ Créer l'objet Flight avec les noms de champs correspondant EXACTEMENT au backend
       const flightData = {
         flightNumber: formData.flightNumber.toUpperCase(),
-        departureAirport: formData.departureAirport,      // ✅ Nom corrigé
-        arrivalAirport: formData.arrivalAirport,          // ✅ Nom corrigé
+        departureAirport: formData.departureAirport,      
+        arrivalAirport: formData.arrivalAirport,          
         departureTime: departureDateTime,
         arrivalTime: arrivalDateTime,
-        capacity: parseInt(formData.capacity),            // ✅ Nom corrigé
+        capacity: parseInt(formData.capacity),           
         availableSeats: parseInt(formData.capacity),
-        flightStatus: mapFlightStatus(formData.flightStatus), // ✅ Nom corrigé
+        flightStatus: mapFlightStatus(formData.flightStatus), 
         price: 1500.0,
-        boardingGate: formData.boardingGate || null,      // ✅ Nom corrigé
-        boardingStart: boardingStartDateTime,             // ✅ Nom corrigé
-        boardingEnd: boardingEndDateTime                  // ✅ Nom corrigé
+        boardingGate: formData.boardingGate || null,      
+        boardingStart: boardingStartDateTime,             
+        boardingEnd: boardingEndDateTime                 
       };
 
       console.log('🚀 Envoi des données vers:', API_URL);
@@ -163,27 +166,31 @@ export default function AeroSmartForm() {
     }
   };
 
+  const handleBackToConfirmation = () => {
+    navigate('/disponibleVols');
+  };
+
   return (
     <div className="container">
-      <header className="header">
-        <div className="logo">
-          <div className="plane-icon">
-            <PlaneIcon />
-          </div>
-          <span className="logo-text">Aero Smart</span>
-        </div>
-        <nav className="nav">
-          <a href="#" className="nav-link">vols disponibles</a>
-          <a href="#" className="nav-link nav-link-active">Ajouter un Vol</a>
-          <a href="#" className="nav-link">Confirmation</a>
-        </nav>
-        <button className="power-button">⏻</button>
-      </header>
+      {/* Admin Header */}
+      <AdminHeader />
 
       <main className="main">
-        <h1 className="title">
-          Remplissez le formulaire pour créer un nouveau vol dans le système
-        </h1>
+        {/* Header avec bouton retour */}
+        <div className="page-header">
+          <button 
+            className="back-button"
+            onClick={handleBackToConfirmation}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Retour aux vols
+          </button>
+          <h1 className="title">
+            Remplissez le formulaire pour créer un nouveau vol
+          </h1>
+        </div>
 
         {/* Messages d'erreur et de succès */}
         {error && (

@@ -1,6 +1,6 @@
 // pages/Register.js
 import React, { useState } from 'react';
-import './AeroSmart.css';
+import '../styles/AeroSmart.css';
 
 function Register({ onNavigate }) {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
