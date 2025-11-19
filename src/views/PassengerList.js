@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/PassengerList.css';
+import AdminHeader from '../components/AdminHeader';
 
 const PassengerList = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  // Récupérer les données du vol depuis la navigation
+  const flightData = location.state?.flight || {
+    flightNumber: "Y12B",
+    date: "19/10/2025", 
+    time: "12:45"
+  };
+
   const [passengers, setPassengers] = useState([
     {
       id: 1,
@@ -38,6 +50,11 @@ const PassengerList = () => {
   const handleCheck = (passengerId) => {
     console.log('Vérifier le passager:', passengerId);
     // Logique pour vérifier le passager
+    setPassengers(passengers.map(passenger => 
+      passenger.id === passengerId 
+        ? { ...passenger, status: "Confirmé" }
+        : passenger
+    ));
   };
 
   const handleDelete = (passengerId) => {
@@ -48,7 +65,7 @@ const PassengerList = () => {
 
   const handleBackToFlights = () => {
     console.log('Retour à la liste des vols');
-    // Navigation vers la page précédente
+    navigate('/confirmation'); // Retour à la page de confirmation
   };
 
   // Filtrer les passagers basé sur la recherche
@@ -59,48 +76,47 @@ const PassengerList = () => {
   );
 
   return (
-    <div className="confirmation-reservations">
-      {/* Header */}
-         <header className="confirmation-header">
-        <nav className="confirmation-nav">
-        <div className="logo-container">
-          <img 
-            src="/images/logo.png" 
-            alt="AeroSmart Logo" 
-            className="logo-image"
-          />
-          <div className="logo">AeroSmart</div>
-        </div>
-          <div className="nav-section">
-            <a href="#vols" className="nav-link">Vols disponibles</a>
-            <a href="#addVols" className="nav-link">Ajouter vol</a>
-            <a href="#confirmation" className="nav-link">Confirmation</a>
-          </div>
-        </nav>
-      </header>
+    <div className="passenger-list-page">
+      {/* Admin Header */}
+      <AdminHeader />
 
       {/* Main Content */}
-      <main className="confirmation-main">
-        <div className="confirmation-container">
+      <main className="passenger-main">
+        <div className="passenger-container">
           
           {/* Page Title and Back Button */}
-          <div className="page-title-section">
-            
+          <div className="page-header-section">
+            <div className="header-top">
+              <button 
+                className="back-button"
+                onClick={handleBackToFlights}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Retour aux vols
+              </button>
+              <h2>Liste des Passagers</h2>
+            </div>
             
             {/* Flight Information Card */}
             <div className="flight-info-card">
               <div className="flight-info-content">
                 <div className="flight-info-item">
                   <span className="flight-info-label">Vol</span>
-                  <span className="flight-info-value">Y12B</span>
+                  <span className="flight-info-value">{flightData.flightNumber}</span>
                 </div>
                 <div className="flight-info-item">
                   <span className="flight-info-label">Date</span>
-                  <span className="flight-info-value">19/10/2025</span>
+                  <span className="flight-info-value">{flightData.date}</span>
                 </div>
                 <div className="flight-info-item">
                   <span className="flight-info-label">Heure</span>
-                  <span className="flight-info-value">12:45</span>
+                  <span className="flight-info-value">{flightData.time}</span>
+                </div>
+                <div className="flight-info-item">
+                  <span className="flight-info-label">Passagers</span>
+                  <span className="flight-info-value">{passengers.length}</span>
                 </div>
               </div>
             </div>
@@ -138,8 +154,8 @@ const PassengerList = () => {
           </div>
 
           {/* Passengers Table */}
-          <div className="flights-table-section">
-            <table className="flights-table">
+          <div className="passengers-table-section">
+            <table className="passengers-table">
               <thead>
                 <tr>
                   <th>Nom du passager</th>
@@ -158,19 +174,23 @@ const PassengerList = () => {
                       <td className={`payment-status ${passenger.payment === 'Payé' ? 'paid' : 'not-paid'}`}>
                         {passenger.payment}
                       </td>
-                      <td className="reservation-status">{passenger.status}</td>
+                      <td className="reservation-status">
+                        <span className={`status-badge ${passenger.status.toLowerCase().replace(' ', '-')}`}>
+                          {passenger.status}
+                        </span>
+                      </td>
                       <td className="actions">
                         <button 
-                          className="action-btn check"
+                          className="action-btn check-btn"
                           onClick={() => handleCheck(passenger.id)}
-                          title="Vérifier"
+                          title="Confirmer le passager"
                         >
                           ✓
                         </button>
                         <button 
-                          className="action-btn delete"
+                          className="action-btn delete-btn"
                           onClick={() => handleDelete(passenger.id)}
-                          title="Supprimer"
+                          title="Supprimer le passager"
                         >
                           ✕
                         </button>

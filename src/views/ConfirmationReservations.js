@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ConfirmationReservations.css';
+import AdminHeader from '../components/AdminHeader.js';
 
 const ConfirmationReservations = () => {
   const [flights, setFlights] = useState([
@@ -34,15 +36,23 @@ const ConfirmationReservations = () => {
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const handleViewReservations = (flightId) => {
     console.log('Voir réservations pour le vol:', flightId);
-    // Navigation vers la page détaillée des réservations
+    // Navigation vers la page PassengerList
+    navigate('/passengers', { 
+      state: { 
+        flightId: flightId,
+        flight: flights.find(f => f.id === flightId)
+      }
+    });
   };
 
   const handleAddFlight = () => {
     console.log('Ajouter un nouveau vol');
-    // Logique pour ajouter un vol
+    // Navigation vers la page d'ajout de vol
+    navigate('/add-flight');
   };
 
   // Filtrer les vols basé sur la recherche
@@ -54,24 +64,8 @@ const ConfirmationReservations = () => {
 
   return (
     <div className="confirmation-reservations">
-      {/* Header */}
-      <header className="confirmation-header">
-        <nav className="confirmation-nav">
-        <div className="logo-container">
-          <img 
-            src="/images/logo.png" 
-            alt="AeroSmart Logo" 
-            className="logo-image"
-          />
-          <div className="logo">AeroSmart</div>
-        </div>
-          <div className="nav-section">
-            <a href="#vols" className="nav-link">Vols disponibles</a>
-            <a href="#addVols" className="nav-link">Ajouter vol</a>
-            <a href="#confirmation" className="nav-link">Confirmation</a>
-          </div>
-        </nav>
-      </header>
+      {/* Admin Header */}
+      <AdminHeader />
 
       {/* Main Content */}
       <main className="confirmation-main">

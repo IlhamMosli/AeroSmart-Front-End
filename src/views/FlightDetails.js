@@ -1,11 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/FlightDetails.css";
-import Header from "../components/Header";
+import AdminHeader from "../components/AdminHeader";
+
 export default function FlightDetails() {
+  const navigate = useNavigate();
+
+  // Fonction pour naviguer vers EditVol.js
+  const handleModifierClick = () => {
+    navigate('/editvol');
+  };
+
+  // Fonction pour supprimer le vol
+  const handleSupprimerClick = () => {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce vol ?')) {
+      console.log('Vol supprimé');
+      // Ici vous pouvez ajouter la logique pour supprimer le vol
+      // Après suppression, vous pouvez naviguer vers une autre page
+      navigate('/vols-disponibles');
+    }
+  };
+
   return (
-   
     <div className="flight-details-fullpage">
-    <Header currentStep={2} />
+      <AdminHeader />
+      
       {/* 🕑 En-tête horaires */}
       <div className="flight-header-fullpage">
         <div className="flight-time-main">
@@ -79,8 +98,18 @@ export default function FlightDetails() {
 
       {/* 🔘 Boutons */}
       <div className="buttons-container-fullpage">
-        <button className="btn-large btn-modify-large">Modifier</button>
-        <button className="btn-large btn-delete-large">Supprimer</button>
+        <button 
+          className="btn-large btn-modify-large"
+          onClick={handleModifierClick}
+        >
+          Modifier
+        </button>
+        <button 
+          className="btn-large btn-delete-large"
+          onClick={handleSupprimerClick}
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   );
