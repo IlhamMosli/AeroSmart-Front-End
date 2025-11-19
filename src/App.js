@@ -1,26 +1,79 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-// import FlightList from './FlightList';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './views/Home';
+import FlightList from './views/FlightList';
+import ConfirmationReservations from './views/ConfirmationReservations';
 import './App.css';
-import AjouteVol from './AjouteVol';
-import VolsDisponibles from './VolsDisponible';
+
+import VolsDisponibles from './views/VolsDisponible';
+
+import AjouteVol from './views/AjouteVol';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Formulaire from './formulaire/Formulaire';
+import BagageSelection from './components/BagageSelection';
+import FlightDetails from './views/FlightDetails';
+import ReservationTicket from './views/ReservationTicket';
+import PassengerList from './views/PassengerList';
+import EditVol from './views/EditVol';
+// URL backend 
+const API_URL = 'http://localhost:8080/api/users';
+
+// Fonction pour basculer login/register
+function AuthApp() {
+  const [currentPage, setCurrentPage] = useState('login');
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'register':
+        return <Register onNavigate={setCurrentPage} />;
+      case 'login':
+      default:
+        return <Login onNavigate={setCurrentPage} />;
+    }
+  };
+
+  return (
+    <div className="App">
+      {renderPage()}
+    </div>
+  );
+}
 
 function App() {
   return (
     <Router>
-  <div className="App">
-    <Routes>
-      <Route path="/" element={<Home />} />
-      {/* <Route path="/flights" element={<FlightList />} /> */}
-      <Route path="/Formulaire" element={<AjouteVol />} />
-      <Route path="/DisponibleVol" element={<VolsDisponibles />} />
-    </Routes>
-  </div>
-</Router>
-    
+      <div className="App">
+        <Routes>
+
+          {/* Auth */}
+          <Route path="/" element={<AuthApp />} />
+          <Route path="/auth" element={<AuthApp />} />
+          
+          {/* Formulaire */}
+          <Route path="/formulaire" element={<Formulaire />} />
+          
+          {/* Bagage */}
+          <Route path="/bagage" element={<BagageSelection />} />
+          
+          {/* Redirections */}
+          <Route path="/login" element={<Navigate to="/" replace />} />
+          <Route path="/register" element={<Navigate to="/" replace />} />
+          
+          {/* Autres pages */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/flights" element={<FlightList />} />
+          <Route path="/confirmation" element={<ConfirmationReservations />} />
+          <Route path="/addvol" element={<AjouteVol />} />
+          <Route path="/flightDetails" element={<FlightDetails />} />
+          <Route path="/reservationTicket" element={<ReservationTicket />} />
+          <Route path="/passengerList" element={<PassengerList />} />
+          <Route path="/DisponibleVol" element={<VolsDisponibles />} />
+          <Route path="/editvol" element={<EditVol />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 
 export default App;

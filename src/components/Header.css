@@ -1,0 +1,75 @@
+/* Header et Navigation */
+.header {
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .navbar {
+    display: absolute;
+    justify-content: space-between;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo-image {
+    height: 32px;
+    width: auto;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* AppBar des étapes */
+  .steps-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+  
+  .step.active .step-number {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  .step-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .step.active .step-label {
+    color: #2563eb;
+    font-weight: 600;
+  }
